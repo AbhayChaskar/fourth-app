@@ -1,0 +1,9 @@
+{
+    "Employees":[
+        {"id":101,"ename":"Abhay","Salary":10000,"quantity":10,"images":"1.png"},
+        {"id":102,"ename":"Akshay","Salary":20000,"quantity":20,"images":"1.png"},
+        {"id":103,"ename":"Shubham","Salary":30000,"quantity":15,"images":"1.png"},
+        {"id":104,"ename":"Mayur","Salary":40000,"quantity":30,"images":"1.png"},
+        {"id":105,"ename":"Balla","Salary":50000,"quantity":5,"images":"1.png"}
+    ]
+}
