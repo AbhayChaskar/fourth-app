@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import json from '../server/products.json'
-
+const URL="http://localhost:3000/Products";
 export class Prooducts extends Component {
     constructor(props){
         super(props);
@@ -10,14 +10,23 @@ export class Prooducts extends Component {
         const {name,value}=event.target;
         this.setState({[name]:value})
     }
-    componentDidMount(){
+    componentDidMount=async()=>{
+        try{
         const URL="http://localhost:3000/Products";
-        fetch(URL)
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            this.setState({itemData:data})
-        })
+        // fetch(URL)
+        // .then(res=>res.json())
+        // .then(data=>{
+        //     console.log(data)
+        //     this.setState({itemData:data})
+        // })
+        const res = await fetch(URL);
+        const resData = await res.json();
+        this.setState({itemData:resData})
+        }
+        catch(err)
+        {
+            console.log(err)
+        }
     }
     addCart=(pid)=>{
         // alert(pid);
@@ -52,7 +61,7 @@ export class Prooducts extends Component {
             }
         })
         .then(res=> res.json())
-        .then(json=>{
+        .then(data=>{
             alert("Product Added");
             
             fetch(URL)
@@ -87,11 +96,11 @@ export class Prooducts extends Component {
                   </form>
             </div>
                 <div className="row">
-                <nav class="nav">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link" href="#">About</a>
-                <a class="nav-link" href="#">Cart {this.state.len}</a>
-                <a class="nav-link">Disabled</a>
+                <nav className="nav">
+                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                <a className="nav-link" href="#">About</a>
+                <a className="nav-link" href="#">Cart {this.state.len}</a>
+                <a className="nav-link">Disabled</a>
                 </nav>
                 {this.state.itemData.map(item=>
                 <div className="col-sm-4">
@@ -101,7 +110,8 @@ export class Prooducts extends Component {
                         <div className="card-body text-center">
                             <h5 className="card-title">{item.pname}</h5>
                             {/* <p className="card-text">Id:{item.pid}</p> */}
-                            <p className="card-text">Price: {item.price} & Quantity: {item.quantity}</p>
+                            <p className="card-text">Price: {item.price} </p>
+                            <p > Quantity: {item.quantity}</p>
                             {/* <a href="#" className="btn btn-primary" onClick={()=>this.addCart(item.pid)}>Add in cart</a> */}
                         </div>
                     </div>

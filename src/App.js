@@ -5,10 +5,12 @@ import Prooducts from './http req/Prooducts';
 import Posts from './http req/Posts';
 import Comments from './http req/Comments';
 import Users from './http req/Users';
+import Axios from './http req/Axios';
 
 function App() {
   return (
     <div>
+      <Axios/>
       <Prooducts/>
       <Login/>
       <hr/>
